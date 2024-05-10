@@ -101,9 +101,9 @@
             // Find the index of the item to remove
             const index = cartItems.findIndex(item => item.name === productName && item.price === price);
             if (index !== -1) {
-                cartItems.splice(index, 1); // Remove the item from the array
-                localStorage.setItem('cartItems', JSON.stringify(cartItems)); // Update the cart in local storage
-                displayCartItems(); // Update the display of the shopping cart
+                cartItems.splice(index, 1); 
+                localStorage.setItem('cartItems', JSON.stringify(cartItems));
+                displayCartItems(); 
             }
         }
     </script>
