@@ -23,7 +23,6 @@
     </style>
 </head>
 <body>
-    
     <nav>
         <div class="container">
             <h1>Nel's Tech & Gaming Hub</h1>
@@ -35,10 +34,10 @@
                 <li><a href="products2.html">Retro Gaming Consoles</a></li>
                 <li><a href="products3.html">Accessories</a></li>
                 <li><a href="contact.html">Contact</a></li>
+                <li><a href="cart.html">Shopping Cart</a></li>
             </ul>
         </div>
     </nav>
-    
     <section class="latest-products">
         <h2>Retro Gaming Consoles</h2>
     </section>
@@ -49,83 +48,128 @@
             <img src="segagenesis.jpg" alt="Sega Genesis">
             <h3>Sega Genesis</h3>
             <p>The Sega Genesis, known as the Mega Drive outside of North America, is a 16-bit home video game console developed and sold by Sega.</p>
-            <p>Price: $79.99</p>
-            <button>Add to Cart</button>
+            <p class="price">Price: $79.99</p>
+            <button onclick="addToCart('Sega Genesis', 79.99, 1)">Add to Cart</button>
         </div>
+        
 
         <div class="product">
             <img src="snes.jpg" alt="Super Nintendo Entertainment System (SNES)">
             <h3>Super Nintendo Entertainment System (SNES)</h3>
             <p>The SNES is a 16-bit home video game console developed by Nintendo that was released in 1990.</p>
-            <p>Price: $89.99</p>
-            <button>Add to Cart</button>
+            <p class="price">Price: $89.99</p>
+            <button onclick="addToCart('Super Nintendo Entertainment System (SNES)', 89.99, 1)">Add to Cart</button>
         </div>
-
+        
 
         <div class="product">
             <img src="nes.jpg" alt="Nintendo Entertainment System (NES)">
             <h3>Nintendo Entertainment System (NES)</h3>
             <p>The NES is an 8-bit home video game console developed and manufactured by Nintendo.</p>
-            <p>Price: $69.99</p>
-            <button>Add to Cart</button>
+            <p class="price">Price: $89.99</p>
+            <button onclick="addToCart('Nintendo Entertainment System (NES)', 89.99, 1)">Add to Cart</button>
         </div>
-
+        
         <div class="product">
             <img src="atari2600.jpg" alt="Atari 2600">
             <h3>Atari 2600</h3>
             <p>The Atari 2600, originally branded as the Atari Video Computer System (Atari VCS) until November 1982, is a home video game console developed and produced by Atari, Inc.</p>
-            <p>Price: $59.99</p>
-            <button>Add to Cart</button>
+            <p class="price">Price: $59.99</p>
+            <button onclick="addToCart('Atari 2600', 59.99, 1)">Add to Cart</button>
         </div>
+        
 
         <div class="product">
             <img src="segamastersystem.jpg" alt="Sega Master System">
             <h3>Sega Master System</h3>
             <p>The Sega Master System is a third-generation 8-bit home video game console manufactured by Sega.</p>
-            <p>Price: $49.99</p>
-            <button>Add to Cart</button>
+            <p class="price">Price: $49.99</p>
+            <button onclick="addToCart('Sega Master System', 49.99, 1)">Add to Cart</button>
         </div>
+        
 
         <div class="product">
             <img src="atari5200.jpg" alt="Atari 5200">
             <h3>Atari 5200</h3>
             <p>The Atari 5200 SuperSystem is a second-generation home video game console that was introduced by Atari, Inc. in 1982.</p>
-            <p>Price: $79.99</p>
-            <button>Add to Cart</button>
+            <p class="price">Price: $79.99</p>
+            <button onclick="addToCart('Atari 5200', 79.99, 1)">Add to Cart</button>
         </div>
+        
 
         <div class="product">
             <img src="intellivision.jpg" alt="Intellivision">
             <h3>Intellivision</h3>
             <p>The Intellivision is a home video game console released by Mattel Electronics in 1979.</p>
-            <p>Price: $99.99</p>
-            <button>Add to Cart</button>
+            <p class="price">Price: $99.99</p>
+            <button onclick="addToCart('Intellivision', 99.99, 1)">Add to Cart</button>
         </div>
+        
 
         <div class="product">
             <img src="colecovision.jpg" alt="ColecoVision">
             <h3>ColecoVision</h3>
             <p>The ColecoVision is a home video game console released by Coleco Industries in August 1982.</p>
-            <p>Price: $89.99</p>
-            <button>Add to Cart</button>
+            <p class="price">Price: $89.99</p>
+            <button onclick="addToCart('ColecoVision', 89.99, 1)">Add to Cart</button>
         </div>
-
+        
         <div class="product">
             <img src="neogeo.jpg" alt="Neo Geo">
             <h3>Neo Geo</h3>
             <p>The Neo Geo is a family of video game hardware developed by SNK.</p>
-            <p>Price: $199.99</p>
-            <button>Add to Cart</button>
+            <p class="price">Price: $199.99</p>
+            <button onclick="addToCart('Neo Geo', 199.99, 1)">Add to Cart</button>
         </div>
-
+        
         <div class="product">
             <img src="atarijaguar.jpg" alt="Atari Jaguar">
             <h3>Atari Jaguar</h3>
             <p>The Atari Jaguar is a home video game console that was developed by Atari Corporation and released in 1993.</p>
-            <p>Price: $129.99</p>
-            <button>Add to Cart</button>
+            <p class="price">Price: $129.99</p>
+            <button onclick="addToCart('Atari Jaguar', 129.99, 1)">Add to Cart</button>
         </div>
+        
     </section>
 
+</body>
+</html>
+
+<footer>
+    <div class="container">
+        <p>&copy;Nel's Tech & Gaming Hub. All rights reserved.</p>
+    </div>
+</footer>
+</body>
+</html>
+
+<script>
+    function addToCart(name, price, quantity) {
+    // Retrieve cart items from localStorage
+    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+    // Check if price and quantity are valid numbers
+    if (!isNaN(price) && !isNaN(quantity) && price > 0 && quantity > 0) {
+        // Create a new cart item object
+        const newItem = {
+            name: name,
+            price: price,
+            qty: quantity
+        };
+
+        // Add the new item to the cart
+        cartItems.push(newItem);
+
+        // Update the cart in localStorage
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+        // Optionally, provide some feedback to the user that the item has been added
+        alert("Item added to cart successfully!");
+    } else {
+        // Provide feedback to the user if price or quantity is invalid
+        alert("Invalid item price or quantity");
+    }
+}
+</script>
 </body>
 </html>

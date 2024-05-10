@@ -23,7 +23,6 @@
     </style>
 </head>
 <body>
-    
     <nav>
         <div class="container">
             <h1>Nel's Tech & Gaming Hub</h1>
@@ -35,8 +34,10 @@
                 <li><a href="products2.html">Retro Gaming Consoles</a></li>
                 <li><a href="products3.html">Accessories</a></li>
                 <li><a href="contact.html">Contact</a></li>
+                <li><a href="cart.html">Shopping Cart</a></li>
             </ul>
         </div>
+    </nav>
     </nav>
     
     <section class="latest-products">
@@ -49,82 +50,118 @@
             <img src="gaming_headset.jpg" alt="Gaming Headset">
             <h3>Gaming Headset</h3>
             <p>A high-quality gaming headset with surround sound for immersive gaming experiences.</p>
-            <p>Price: $99.99</p>
-            <button>Add to Cart</button>
+            <p class="price">Price: $99.99</p>
+            <button onclick="addToCart('Gaming Headset', 99.99, 1)">Add to Cart</button>
         </div>
+        
 
         <div class="product">
             <img src="gaming_mouse.jpg" alt="Gaming Mouse">
             <h3>Gaming Mouse</h3>
             <p>An ergonomic gaming mouse with customizable buttons and adjustable DPI settings.</p>
-            <p>Price: $49.99</p>
-            <button>Add to Cart</button>
+            <p class="price">Price: $49.99</p>
+            <button onclick="addToCart('Gaming Mouse', 49.99, 1)">Add to Cart</button>
         </div>
-
+        
         <div class="product">
             <img src="gaming_keyboard.jpg" alt="Gaming Keyboard">
             <h3>Gaming Keyboard</h3>
             <p>A mechanical gaming keyboard with RGB backlighting and anti-ghosting technology.</p>
-            <p>Price: $79.99</p>
-            <button>Add to Cart</button>
+            <p class="price">Price: $79.99</p>
+            <button onclick="addToCart('Gaming Keyboard', 79.99, 1)">Add to Cart</button>
         </div>
-
+        
         <div class="product">
             <img src="gaming_controller.jpg" alt="Gaming Controller">
             <h3>Gaming Controller</h3>
             <p>A wireless gaming controller compatible with PlayStation 5.</p>
-            <p>Price: $59.99</p>
-            <button>Add to Cart</button>
+            <p class="price">Price: $59.99</p>
+            <button onclick="addToCart('Gaming Controller', 59.99, 1)">Add to Cart</button>
         </div>
+        
 
         <div class="product">
             <img src="gaming_chair.jpg" alt="Gaming Chair">
             <h3>Gaming Chair</h3>
             <p>A comfortable gaming chair with lumbar support and adjustable armrests.</p>
-            <p>Price: $199.99</p>
-            <button>Add to Cart</button>
+            <p class="price">Price: $199.99</p>
+            <button onclick="addToCart('Gaming Chair', 199.99, 1)">Add to Cart</button>
         </div>
-
+        
         <div class="product">
             <img src="gaming_mousepad.jpg" alt="Gaming Mousepad">
             <h3>Gaming Mousepad</h3>
             <p>A large gaming mousepad with smooth surface for precise mouse movements.</p>
-            <p>Price: $19.99</p>
-            <button>Add to Cart</button>
+            <p class="price">Price: $19.99</p>
+            <button onclick="addToCart('Gaming Mousepad', 19.99, 1)">Add to Cart</button>
         </div>
-
+        
         <div class="product">
             <img src="gaming_steering_wheel.jpg" alt="Gaming Steering Wheel">
             <h3>Gaming Steering Wheel</h3>
             <p>A racing gaming steering wheel with force feedback for realistic driving simulation.</p>
-            <p>Price: $299.99</p>
-            <button>Add to Cart</button>
+            <p class="price">Price: $299.99</p>
+            <button onclick="addToCart('Gaming Steering Wheel', 299.99, 1)">Add to Cart</button>
         </div>
-
+        
         <div class="product">
             <img src="gaming_capture_card.jpg" alt="Gaming Capture Card">
             <h3>Gaming Capture Card</h3>
             <p>A gaming capture card for streaming and recording gameplay in high definition.</p>
-            <p>Price: $149.99</p>
-            <button>Add to Cart</button>
+            <p class="price">Price: $149.99</p>
+            <button onclick="addToCart('Gaming Capture Card', 149.99, 1)">Add to Cart</button>
         </div>
-
+        
         <div class="product">
             <img src="gaming_desk.jpg" alt="Gaming Desk">
             <h3>Gaming Desk</h3>
             <p>A spacious gaming desk with built-in cable management and RGB lighting.</p>
-            <p>Price: $249.99</p>
-            <button>Add to Cart</button>
+            <p class="price">Price: $199.99</p>
+            <button onclick="addToCart('Gaming Desk', 199.99, 1)">Add to Cart</button>
         </div>
-
+        
         <div class="product">
             <img src="gaming_speakers.jpg" alt="Gaming Speakers">
             <h3>Gaming Speakers</h3>
             <p>High-fidelity gaming speakers with surround sound for immersive audio experiences.</p>
-            <p>Price: $129.99</p>
-            <button>Add to Cart</button>
+            <p class="price">Price: $129.99</p>
+            <button onclick="addToCart('Gaming Speakers', 129.99, 1)">Add to Cart</button>
         </div>
-    </section>
+        
+        <footer>
+            <div class="container">
+                <p>&copy;Nel's Tech & Gaming Hub. All rights reserved.</p>
+            </div>
+        </footer>
+    
 
-</body>
-</html>
+        <script>
+            function addToCart(name, price, quantity) {
+            // Retrieve cart items from localStorage
+            let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        
+            // Check if price and quantity are valid numbers
+            if (!isNaN(price) && !isNaN(quantity) && price > 0 && quantity > 0) {
+                // Create a new cart item object
+                const newItem = {
+                    name: name,
+                    price: price,
+                    qty: quantity
+                };
+        
+                // Add the new item to the cart
+                cartItems.push(newItem);
+        
+                // Update the cart in localStorage
+                localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        
+                // Optionally, provide some feedback to the user that the item has been added
+                alert("Item added to cart successfully!");
+            } else {
+                // Provide feedback to the user if price or quantity is invalid
+                alert("Invalid item price or quantity");
+            }
+        }
+        </script>
+        </body>
+        </html>

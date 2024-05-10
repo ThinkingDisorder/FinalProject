@@ -34,12 +34,12 @@
                 <li><a href="products2.html">Retro Gaming Consoles</a></li>
                 <li><a href="products3.html">Accessories</a></li>
                 <li><a href="contact.html">Contact</a></li>
+                <li><a href="cart.html">Shopping Cart</a></li>
             </ul>
         </div>
     </nav>
-    
-
     <section class="latest-products">
+        
         <h2>Handheld Gaming Consoles</h2>
     </section>
 
@@ -49,82 +49,122 @@
             <img src="3ds.jpg" alt="Nintendo 3DS">
             <h3>Nintendo 3DS</h3>
             <p>The Nintendo 3DS offers glasses-free 3D gaming and a large library of games, including classic Nintendo franchises.</p>
-            <p>Price: $149.99</p>
-            <button>Add to Cart</button>
-        </div>
+            <p class="price">Price: $149.99</p>
+            <button onclick="addToCart('Nintendo 3DS', 149.99, 1)">Add to Cart</button>
+        </div>        
 
         <div class="product">
             <img src="2ds.jpg" alt="Nintendo 2DS">
             <h3>Nintendo 2DS</h3>
             <p>The Nintendo 2DS is a budget-friendly handheld console that plays Nintendo 3DS games in 2D.</p>
-            <p>Price: $99.99</p>
-            <button>Add to Cart</button>
+            <p class="price">Price: $99.99</p>
+            <button onclick="addToCart('Nintendo 2DS', 99.99, 1)">Add to Cart</button>
         </div>
-
+        
         <div class="product">
             <img src="ds.jpg" alt="Nintendo DS">
             <h3>Nintendo DS</h3>
             <p>The Nintendo DS introduced dual-screen gaming and a touchscreen interface, offering innovative gameplay experiences.</p>
-            <p>Price: $79.99</p>
-            <button>Add to Cart</button>
+            <p class="price">Price: $79.99</p>
+            <button onclick="addToCart('Nintendo DS', 79.99, 1)">Add to Cart</button>
         </div>
-
+        
         <div class="product">
             <img src="psvita.jpg" alt="PlayStation Vita">
             <h3>PlayStation Vita</h3>
             <p>The PlayStation Vita is a powerful handheld console with a vibrant OLED display and a wide range of games.</p>
-            <p>Price: $199.99</p>
-            <button>Add to Cart</button>
+            <p class="price">Price: $199.99</p>
+            <button onclick="addToCart('PlayStation Vita', 199.99, 1)">Add to Cart</button>
         </div>
 
         <div class="product">
             <img src="psp.jpg" alt="PlayStation Portable (PSP)">
             <h3>PlayStation Portable (PSP)</h3>
             <p>The PlayStation Portable (PSP) revolutionized handheld gaming with its multimedia capabilities and extensive game library.</p>
-            <p>Price: $99.99</p>
-            <button>Add to Cart</button>
+            <p class="price">Price: $99.99</p>
+            <button onclick="addToCart('PlayStation Portable (PSP)', 99.99, 1)">Add to Cart</button>
         </div>
-
+        
         <div class="product">
             <img src="switchlite.jpg" alt="Nintendo Switch Lite">
             <h3>Nintendo Switch Lite</h3>
             <p>The Nintendo Switch Lite is a compact and lightweight version of the Nintendo Switch, designed for handheld gaming.</p>
-            <p>Price: $199.99</p>
-            <button>Add to Cart</button>
+            <p class="price">Price: $199.99</p>
+            <button onclick="addToCart('Nintendo Switch Lite', 199.99, 1)">Add to Cart</button>
         </div>
-
+        
         <div class="product">
             <img src="psp.jpg" alt="Sony PSP">
             <h3>Sony PSP (PlayStation Portable)</h3>
             <p>The Sony PSP is a portable gaming powerhouse with a vast library of games and multimedia capabilities.</p>
-            <p>Price: $129.99</p>
-            <button>Add to Cart</button>
+            <p class="price">Price: $129.99</p>
+            <button onclick="addToCart('Sony PSP (PlayStation Portable)', 129.99, 1)">Add to Cart</button>
         </div>
+        
 
         <div class="product">
             <img src="gamegear.jpg" alt="Sega Game Gear">
             <h3>Sega Game Gear</h3>
             <p>The Sega Game Gear was Sega's handheld gaming console featuring full-color graphics and a wide range of games.</p>
-            <p>Price: $89.99</p>
-            <button>Add to Cart</button>
+            <p class="price">Price: $89.99</p>
+            <button onclick="addToCart('Sega Game Gear', 89.99, 1)">Add to Cart</button>
         </div>
-
+        
         <div class="product">
             <img src="neogeopocketcolor.jpg" alt="Neo Geo Pocket Color">
             <h3>Neo Geo Pocket Color</h3>
             <p>The Neo Geo Pocket Color was known for its high-quality games and vibrant color screen, providing a unique gaming experience.</p>
-            <p>Price: $99.99</p>
-            <button>Add to Cart</button>
+            <p class="price">Price: $99.99</p>
+            <button onclick="addToCart('Neo Geo Pocket Color', 99.99, 1)">Add to Cart</button>
         </div>
-
+        
         <div class="product">
             <img src="gameboycolor.jpg" alt="Nintendo Game Boy Color">
             <h3>Nintendo Game Boy Color</h3>
             <p>The Game Boy Color introduced color graphics to the Game Boy line and offered a wide range of games.</p>
-            <p>Price: $69.99</p>
-            <button>Add to Cart</button>
+            <p class="price">Price: $69.99</p>
+            <button onclick="addToCart('Nintendo Game Boy Color', 69.99, 1)">Add to Cart</button>
         </div>
+        
     </section>
 
+</body>
+</html>
+
+<footer>
+    <div class="container">
+        <p>&copy;Nel's Tech & Gaming Hub. All rights reserved.</p>
+    </div>
+</footer>
+
+
+<script>
+    function addToCart(name, price, quantity) {
+    // Retrieve cart items from localStorage
+    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+    // Check if price and quantity are valid numbers
+    if (!isNaN(price) && !isNaN(quantity) && price > 0 && quantity > 0) {
+        // Create a new cart item object
+        const newItem = {
+            name: name,
+            price: price,
+            qty: quantity
+        };
+
+        // Add the new item to the cart
+        cartItems.push(newItem);
+
+        // Update the cart in localStorage
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+        // Optionally, provide some feedback to the user that the item has been added
+        alert("Item added to cart successfully!");
+    } else {
+        // Provide feedback to the user if price or quantity is invalid
+        alert("Invalid item price or quantity");
+    }
+}
+</script>
 </body>
 </html>

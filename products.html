@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Nel's Tech & Gaming Hub</title>
+    <title>Handheld Gaming - Nel's Tech & Gaming Hub</title>
     <meta name="author" content="Neldan Edward">
-    <meta name="description" content="A page to talk about Nel's Tech & Gaming Hub.">
-    <meta name="keywords" content="Nel's Tech & Gaming Hub, technology, gaming, store, about us">
+    <meta name="description" content="Explore a variety of handheld gaming consoles and accessories at Nel's Tech & Gaming Hub.">
+    <meta name="keywords" content="handheld gaming, gaming consoles, handheld consoles, gaming accessories">
     <link rel="stylesheet" href="styles.css"> 
     <style>
         .products {
@@ -34,86 +34,137 @@
                 <li><a href="products2.html">Retro Gaming Consoles</a></li>
                 <li><a href="products3.html">Accessories</a></li>
                 <li><a href="contact.html">Contact</a></li>
+                <li><a href="cart.html">Shopping Cart</a></li>
             </ul>
         </div>
     </nav>
-    
-
     <section class="latest-products">
+        
         <h2>Latest Gaming Consoles</h2>
     </section>
 
     <section class="products">
+
         <div class="product">
-            <img src="ps5.jpg" alt="PlayStation 5">
-            <h3>PlayStation 5</h3>
-            <p>The PlayStation 5 is the latest gaming console from Sony, offering cutting-edge graphics and immersive gameplay experiences.</p>
-            <p>Price: $499.99</p>
-            <button>Add to Cart</button>
-        </div>
+        <img src="ps5.jpg" alt="PlayStation 5">
+        <h3>PlayStation 5</h3>
+        <p>The PlayStation 5 is the latest gaming console from Sony, offering cutting-edge graphics and immersive gameplay experiences.</p>
+        <p class="price">Price: $499.99</p>
+        <button onclick="addToCart('PlayStation 5', 499.99, 1)">Add to Cart</button>
+    </div>
+    
         <div class="product">
             <img src="ps4.jpg" alt="PlayStation 4">
             <h3>PlayStation 4</h3>
             <p>The PlayStation 4 revolutionized console gaming with its powerful hardware and extensive library of games.</p>
-            <p>Price: $299.99</p>
-            <button>Add to Cart</button>
+            <p class="price">Price: $299.99</p>
+            <button onclick="addToCart('PlayStation 4', 299.99, 1)">Add to Cart</button>
         </div>
+        
         <div class="product">
             <img src="ps3.jpg" alt="PlayStation 3">
             <h3>PlayStation 3</h3>
             <p>The PlayStation 3 introduced Blu-ray technology and advanced online features to the gaming world.</p>
-            <p>Price: $149.99</p>
-            <button>Add to Cart</button>
+            <p class="price">Price: $149.99</p>
+            <button onclick="addToCart('PlayStation 3', 149.99, 1)">Add to Cart</button>
         </div>
+        
         <div class="product">
             <img src="xboxone.jpg" alt="Xbox One">
             <h3>Xbox One</h3>
             <p>The Xbox One offers stunning visuals and a robust online gaming experience, perfect for both casual and competitive gamers.</p>
-            <p>Price: $399.99</p>
-            <button>Add to Cart</button>
+            <p class="price">Price: $399.99</p>
+            <button onclick="addToCart('Xbox One', 399.99, 1)">Add to Cart</button>
         </div>
+        
         <div class="product">
             <img src="xbox360.jpg" alt="Xbox 360">
             <h3>Xbox 360</h3>
             <p>The Xbox 360, a classic console from Microsoft, introduced a new era of gaming with its online multiplayer and extensive entertainment features.</p>
-            <p>Price: $199.99</p>
-            <button>Add to Cart</button>
+            <p class="price">Price: $199.99</p>
+            <button onclick="addToCart('Xbox 360', 199.99, 1)">Add to Cart</button>
         </div>
+        
         <div class="product">
             <img src="xboxseriesx.jpg" alt="Xbox Series X">
             <h3>Xbox Series X</h3>
             <p>The Xbox Series X delivers next-gen performance with fast load times and stunning visuals, perfect for hardcore gamers.</p>
-            <p>Price: $499.99</p>
-            <button>Add to Cart</button>
+            <p class="price">Price: $499.99</p>
+            <button onclick="addToCart('Xbox Series X', 499.99, 1)">Add to Cart</button>
         </div>
+        
         <div class="product">
             <img src="wii.jpg" alt="Wii">
             <h3>Wii</h3>
             <p>The Wii brought motion-controlled gaming to the masses, offering a unique and fun gaming experience for players of all ages.</p>
-            <p>Price: $149.99</p>
-            <button>Add to Cart</button>
+            <p class="price">Price: $149.99</p>
+            <button onclick="addToCart('Wii', 149.99, 1)">Add to Cart</button>
         </div>
+        
         <div class="product">
             <img src="switch.jpg" alt="Nintendo Switch">
             <h3>Nintendo Switch</h3>
             <p>The Nintendo Switch is a versatile gaming console that allows you to play anywhere, anytime, with its handheld and docked modes.</p>
-            <p>Price: $299.99</p>
-            <button>Add to Cart</button>
+            <p class="price">Price: $299.99</p>
+            <button onclick="addToCart('Nintendo Switch', 299.99, 1)">Add to Cart</button>
         </div>
+        
         <div class="product">
             <img src="oledswitch.jpg" alt="OLED Switch">
             <h3>OLED Switch</h3>
             <p>The OLED Switch features a vibrant OLED display, providing stunning visuals for your favorite games.</p>
-            <p>Price: $349.99</p>
-            <button>Add to Cart</button>
+            <p class="price">Price: $349.99</p>
+            <button onclick="addToCart('OLED Switch', 349.99, 1)">Add to Cart</button>
         </div>
+        
         <div class="product">
             <img src="ps4slim.jpg" alt="PlayStation 4 Slim">
             <h3>PlayStation 4 Slim</h3>
             <p>The PlayStation 4 Slim is a more compact and energy-efficient version of the original PlayStation 4, offering the same great gaming experience.</p>
-            <p>Price: $299.99</p>
-            <button>Add to Cart</button>
+            <p class="price">Price: $299.99</p>
+            <button onclick="addToCart('PlayStation 4 Slim', 299.99, 1)">Add to Cart</button>
         </div>
-    
+    </div>
+</div>
+</section>
+</body>
+</html>
+
+<footer>
+    <div class="container">
+        <p>&copy;Nel's Tech & Gaming Hub. All rights reserved.</p>
+    </div>
+</footer>
+</body>
+</html>
+
+<script>
+    function addToCart(name, price, quantity) {
+    // Retrieve cart items from localStorage
+    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+    // Check if price and quantity are valid numbers
+    if (!isNaN(price) && !isNaN(quantity) && price > 0 && quantity > 0) {
+        // Create a new cart item object
+        const newItem = {
+            name: name,
+            price: price,
+            qty: quantity
+        };
+
+        // Add the new item to the cart
+        cartItems.push(newItem);
+
+        // Update the cart in localStorage
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+        // Optionally, provide some feedback to the user that the item has been added
+        alert("Item added to cart successfully!");
+    } else {
+        // Provide feedback to the user if price or quantity is invalid
+        alert("Invalid item price or quantity");
+    }
+}
+</script>
 </body>
 </html>
