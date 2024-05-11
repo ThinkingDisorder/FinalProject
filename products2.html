@@ -49,7 +49,7 @@
             <h3>Sega Genesis</h3>
             <p>The Sega Genesis, known as the Mega Drive outside of North America, is a 16-bit home video game console developed and sold by Sega.</p>
             <p class="price">Price: $79.99</p>
-            <button onclick="addToCart('Sega Genesis', 79.99, 1)">Add to Cart</button>
+            <button onclick="addToCart('Sega Genesis', 79.99)">Add to Cart</button>
         </div>
         
 
@@ -144,32 +144,30 @@
 </html>
 
 <script>
-    function addToCart(name, price, quantity) {
-    // Retrieve cart items from localStorage
-    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    function addToCart(name, price) {
+        // Retrieve cart items from localStorage
+        let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 
-    // Check if price and quantity are valid numbers
-    if (!isNaN(price) && !isNaN(quantity) && price > 0 && quantity > 0) {
-        // Create a new cart item object
-        const newItem = {
-            name: name,
-            price: price,
-            qty: quantity
-        };
+        // Check if price is a valid number
+        if (!isNaN(price) && price > 0) {
+            // Create a new cart item object
+            const newItem = {
+                name: name,
+                price: price,
+                qty: 1 // Set default quantity to 1
+            };
 
-        // Add the new item to the cart
-        cartItems.push(newItem);
+            // Add the new item to the cart
+            cartItems.push(newItem);
 
-        // Update the cart in localStorage
-        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            // Update the cart in localStorage
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
 
-        
-        alert("Item added to cart successfully!");
-    } else {
-        
-        alert("Invalid item price or quantity");
+            alert("Item added to cart successfully!");
+        } else {
+            alert("Invalid item price");
+        }
     }
-}
 </script>
 </body>
 </html>
