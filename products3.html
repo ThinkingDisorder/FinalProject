@@ -133,13 +133,24 @@
             </div>
         </footer>
     
-
-        <script>
-            function addToCart(name, price, quantity) {
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; Nel's Tech & Gaming Hub. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- JavaScript section -->
+    <script>
+        // Define the addToCart function
+        function addToCart(name, price, quantity) {
+            console.log('Adding to cart:', name, price, quantity);
+    
             // Retrieve cart items from localStorage
             let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-        
-            // Check if price and quantity are valid numbers
+    
+            // Check if price and quantity are valid numbers and greater than 0
             if (!isNaN(price) && !isNaN(quantity) && price > 0 && quantity > 0) {
                 // Create a new cart item object
                 const newItem = {
@@ -147,20 +158,25 @@
                     price: price,
                     qty: quantity
                 };
-        
+    
                 // Add the new item to the cart
                 cartItems.push(newItem);
-        
+    
                 // Update the cart in localStorage
                 localStorage.setItem('cartItems', JSON.stringify(cartItems));
-        
-                
+    
+                // Log cartItems to check if item was added
+                console.log('Cart Items:', cartItems);
+    
+                // Provide feedback to the user
                 alert("Item added to cart successfully!");
             } else {
-            
+                // Provide feedback for invalid item
                 alert("Invalid item price or quantity");
             }
         }
-        </script>
-        </body>
-        </html>
+    </script>
+    <!-- End of JavaScript section -->
+    </body>
+    </html>
+    
