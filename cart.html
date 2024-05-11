@@ -66,29 +66,31 @@
             let total = 0;
 
             // Display each cart item
-            cartItems.forEach(item => {
+            cartItems.forEach((item, index) => {
                 const cartItemDiv = document.createElement("div");
                 cartItemDiv.classList.add("cart-item");
 
-                console.log("Item:", item);
-                console.log("Price:", item.price, "Type:", typeof item.price);
-                console.log("Quantity:", item.qty, "Type:", typeof item.qty);
-
-                // Check if item price and quantity are valid numbers
-                if (!isNaN(item.price) && !isNaN(item.qty)) {
-                    const subtotal = item.price * item.qty;
-                    total += subtotal;
-                    cartItemDiv.innerHTML = `
-                        <p>${item.name} - Price: $${item.price} - Quantity: ${item.qty} - Subtotal: $${subtotal}</p>
-                        <button onclick="removeFromCart('${item.name}', ${item.price})">Remove</button>
-                    `;
-                } else {
-                    cartItemDiv.textContent = "Invalid item price or quantity";
+                // Update quantity function
+                function updateQuantity(change) {
+                    const newQty = item.qty + change;
+                    if (newQty >= 1) {
+                        item.qty = newQty;
+                        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+                        displayCartItems();
+                    }
                 }
 
-                cartItemsDiv.appendChild(cartItemDiv);
-            });
+                cartItemDiv.innerHTML = `
+                    <p>${item.name} - Price: $${item.price} - Quantity: ${item.qty} - Subtotal: $${item.price * item.qty}</p>
+                    <button onclick="updateQuantity(1, ${index})">+</button>
+                    <button onclick="updateQuantity(-1, ${index})">-</button>
+                    <button onclick="removeFromCart(${index})">Remove</button>
+                `;
 
+                cartItemsDiv.appendChild(cartItemDiv);
+
+                total += item.price * item.qty;
+            });
 
             totalDiv.textContent = `Total: $${total}`;
         }
@@ -97,15 +99,28 @@
         window.onload = displayCartItems;
 
         // Function to remove an item from the shopping cart
-        function removeFromCart(productName, price) {
+        function removeFromCart(index) {
             let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-            // Find the index of the item to remove
-            const index = cartItems.findIndex(item => item.name === productName && item.price === price);
-            if (index !== -1) {
-                cartItems.splice(index, 1); 
+            cartItems.splice(index, 1);
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            displayCartItems();
+        }
+
+        // Function to handle quantity update
+        function updateQuantity(change, index) {
+            let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            const newQty = cartItems[index].qty + change;
+            if (newQty >= 1) {
+                cartItems[index].qty = newQty;
                 localStorage.setItem('cartItems', JSON.stringify(cartItems));
-                displayCartItems(); 
+                displayCartItems();
             }
+        }
+
+        // Function to handle checkout
+        function checkout() {
+            // Add your checkout logic here
+            alert("Checkout functionality will be implemented here.");
         }
     </script>
 </body>
