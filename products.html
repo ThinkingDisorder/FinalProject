@@ -127,44 +127,124 @@
     </div>
 </div>
 </section>
-</body>
-</html>
+<body>
+    <section>
+        <div class="product">
+            <img src="ps5.jpg" alt="PlayStation 5">
+            <h3>PlayStation 5</h3>
+            <p>The PlayStation 5 is the latest gaming console from Sony, offering cutting-edge graphics and immersive gameplay experiences.</p>
+            <p class="price">Price: $499.99</p>
+            <button class="add-to-cart" data-name="PlayStation 5" data-price="499.99" data-quantity="1">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="ps4.jpg" alt="PlayStation 4">
+            <h3>PlayStation 4</h3>
+            <p>The PlayStation 4 revolutionized console gaming with its powerful hardware and extensive library of games.</p>
+            <p class="price">Price: $299.99</p>
+            <button class="add-to-cart" data-name="PlayStation 4" data-price="299.99" data-quantity="1">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="ps3.jpg" alt="PlayStation 3">
+            <h3>PlayStation 3</h3>
+            <p>The PlayStation 3 introduced Blu-ray technology and advanced online features to the gaming world.</p>
+            <p class="price">Price: $149.99</p>
+            <button class="add-to-cart" data-name="PlayStation 3" data-price="149.99" data-quantity="1">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="xboxone.jpg" alt="Xbox One">
+            <h3>Xbox One</h3>
+            <p>The Xbox One offers stunning visuals and a robust online gaming experience, perfect for both casual and competitive gamers.</p>
+            <p class="price">Price: $399.99</p>
+            <button class="add-to-cart" data-name="Xbox One" data-price="399.99" data-quantity="1">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="xbox360.jpg" alt="Xbox 360">
+            <h3>Xbox 360</h3>
+            <p>The Xbox 360, a classic console from Microsoft, introduced a new era of gaming with its online multiplayer and extensive entertainment features.</p>
+            <p class="price">Price: $199.99</p>
+            <button class="add-to-cart" data-name="Xbox 360" data-price="199.99" data-quantity="1">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="xboxseriesx.jpg" alt="Xbox Series X">
+            <h3>Xbox Series X</h3>
+            <p>The Xbox Series X delivers next-gen performance with fast load times and stunning visuals, perfect for hardcore gamers.</p>
+            <p class="price">Price: $499.99</p>
+            <button class="add-to-cart" data-name="Xbox Series X" data-price="499.99" data-quantity="1">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="wii.jpg" alt="Wii">
+            <h3>Wii</h3>
+            <p>The Wii brought motion-controlled gaming to the masses, offering a unique and fun gaming experience for players of all ages.</p>
+            <p class="price">Price: $149.99</p>
+            <button class="add-to-cart" data-name="Wii" data-price="149.99" data-quantity="1">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="switch.jpg" alt="Nintendo Switch">
+            <h3>Nintendo Switch</h3>
+            <p>The Nintendo Switch is a versatile gaming console that allows you to play anywhere, anytime, with its handheld and docked modes.</p>
+            <p class="price">Price: $299.99</p>
+            <button class="add-to-cart" data-name="Nintendo Switch" data-price="299.99" data-quantity="1">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="oledswitch.jpg" alt="OLED Switch">
+            <h3>OLED Switch</h3>
+            <p>The OLED Switch features a vibrant OLED display, providing stunning visuals for your favorite games.</p>
+            <p class="price">Price: $349.99</p>
+            <button class="add-to-cart" data-name="OLED Switch" data-price="349.99" data-quantity="1">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="ps4slim.jpg" alt="PlayStation 4 Slim">
+            <h3>PlayStation 4 Slim</h3>
+            <p>The PlayStation 4 Slim is a more compact and energy-efficient version of the original PlayStation 4, offering the same great gaming experience.</p>
+            <p class="price">Price: $299.99</p>
+            <button class="add-to-cart" data-name="PlayStation 4 Slim" data-price="299.99" data-quantity="1">Add to Cart</button>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <p>&copy; Nel's Tech & Gaming Hub. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        function addToCart(name, price, quantity) {
+            // Retrieve cart items from localStorage
+            let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    
+            // Check if price and quantity are valid numbers
+            if (!isNaN(price) && !isNaN(quantity) && price > 0 && quantity > 0) {
+                // Create a new cart item object
+                const newItem = {
+                    name: name,
+                    price: price,
+                    qty: quantity
+                };
+    
+                // Add the new item to the cart
+                cartItems.push(newItem);
+    
+                // Update the cart in localStorage
+                localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    
+                alert("Item added to cart successfully!");
+            } else {
+                alert("Invalid item price or quantity");
+            }
+        }
 
-<footer>
-    <div class="container">
-        <p>&copy;Nel's Tech & Gaming Hub. All rights reserved.</p>
-    </div>
-</footer>
-</body>
-</html>
-
-<script>
-    function addToCart(name, price, quantity) {
-    // Retrieve cart items from localStorage
-    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-
-    // Check if price and quantity are valid numbers
-    if (!isNaN(price) && !isNaN(quantity) && price > 0 && quantity > 0) {
-        // Create a new cart item object
-        const newItem = {
-            name: name,
-            price: price,
-            qty: quantity
-        };
-
-        // Add the new item to the cart
-        cartItems.push(newItem);
-
-        // Update the cart in localStorage
-        localStorage.setItem('cartItems', JSON.stringify(cartItems));
-
-        
-        alert("Item added to cart successfully!");
-    } else {
-        
-        alert("Invalid item price or quantity");
-    }
-}
-</script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Select all buttons with class 'add-to-cart'
+            const buttons = document.querySelectorAll('.add-to-cart');
+            
+            // Add event listeners to all the buttons
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const name = button.getAttribute('data-name');
+                    const price = parseFloat(button.getAttribute('data-price'));
+                    const quantity = parseInt(button.getAttribute('data-quantity'));
+                    addToCart(name, price, quantity);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
