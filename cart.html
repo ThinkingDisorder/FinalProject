@@ -44,7 +44,7 @@
         <div id="cart-items">
             <!-- The cart items will be displayed here -->
         </div>
-         <button class="checkout-button" onclick="checkout()">Purchase</button>
+        <button class="checkout-button">Purchase</button>
         <div id="total"></div>
     </div>
 
@@ -55,49 +55,48 @@
     </footer>
 
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkoutButton = document.querySelector('.checkout-button');
+            checkoutButton.addEventListener('click', function() {
+                checkout();
+            });
+    
+            displayCartItems();
+        });
+    
         // Function to display cart items on the cart page
         function displayCartItems() {
             const cartItemsDiv = document.getElementById("cart-items");
             const totalDiv = document.getElementById("total");
             cartItemsDiv.innerHTML = "";
-
+    
             // Retrieve cart items from localStorage
             let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
             let total = 0;
-
+    
             // Display each cart item
             cartItems.forEach((item, index) => {
                 const cartItemDiv = document.createElement("div");
                 cartItemDiv.classList.add("cart-item");
-
-                // Update quantity function
-                function updateQuantity(change) {
-                    const newQty = item.qty + change;
-                    if (newQty >= 1) {
-                        item.qty = newQty;
-                        localStorage.setItem('cartItems', JSON.stringify(cartItems));
-                        displayCartItems();
-                    }
-                }
-
+    
                 cartItemDiv.innerHTML = `
-                    <p>${item.name} - Price: $${item.price} - Quantity: ${item.qty} - Subtotal: $${item.price * item.qty}</p>
+                    <p>${item.name} - Price: $${item.price} - Quantity: ${item.qty} - Subtotal: $${(item.price * item.qty).toFixed(2)}</p>
                     <button onclick="updateQuantity(1, ${index})">+</button>
                     <button onclick="updateQuantity(-1, ${index})">-</button>
                     <button onclick="removeFromCart(${index})">Remove</button>
                 `;
-
+    
                 cartItemsDiv.appendChild(cartItemDiv);
-
+    
                 total += item.price * item.qty;
             });
-
+    
+            // Round the total to two decimal places
+            total = total.toFixed(2);
+    
             totalDiv.textContent = `Total: $${total}`;
         }
-
-        // Call the displayCartItems function when the page loads
-        window.onload = displayCartItems;
-
+    
         // Function to remove an item from the shopping cart
         function removeFromCart(index) {
             let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
@@ -105,7 +104,7 @@
             localStorage.setItem('cartItems', JSON.stringify(cartItems));
             displayCartItems();
         }
-
+    
         // Function to handle quantity update
         function updateQuantity(change, index) {
             let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
@@ -116,12 +115,11 @@
                 displayCartItems();
             }
         }
-
+    
         // Function to handle checkout
         function checkout() {
-            
-            alert("Purchase Confirmed!");
+            // Add your checkout logic here
+            alert("Order Confirmed!");
         }
     </script>
-</body>
-</html>
+    
